@@ -1,5 +1,3 @@
-APPID = 'b2a36377cec0c02671aae5e00cfcda14'
-
 //-----------------------------------------Angular JS----------------------------------------------------
 angular.module('airStatusApp', [])
 .controller('AirStatusController', ['$scope', '$http', function($scope, $http) {
@@ -68,12 +66,12 @@ angular.module('airStatusApp', [])
             const data = response.data;
             $scope.airData = {
                 date: data.current.time.split('T')[0],
-                currentAQI: data.hourly.european_aqi[0],
-                PM2_5: data.hourly.european_aqi_pm2_5[0],
-                PM10: data.hourly.european_aqi_pm10[0],
-                NO2: data.hourly.european_aqi_nitrogen_dioxide[0],
-                O3: data.hourly.european_aqi_ozone[0],
-                SO2: data.hourly.european_aqi_sulphur_dioxide[0],
+                currentAQI: Math.round(data.hourly.european_aqi[0]),
+                PM2_5: Math.round(data.hourly.european_aqi_pm2_5[0]),
+                PM10: Math.round(data.hourly.european_aqi_pm10[0]),
+                NO2: Math.round(data.hourly.european_aqi_nitrogen_dioxide[0]),
+                O3: Math.round(data.hourly.european_aqi_ozone[0]),
+                SO2: Math.round(data.hourly.european_aqi_sulphur_dioxide[0]),
             };
 
             $scope.airData.statuses = {
@@ -88,6 +86,7 @@ angular.module('airStatusApp', [])
             const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             $scope.dayOfWeek = daysOfWeek[date.getDay()];
             $scope.errorMessage = '';
+            console.log('Air quality data loaded:', $scope.airData);
         }).catch(function(error) {
             console.error('Error fetching air quality:', error);
             $scope.errorMessage = 'Failed to load air quality data. Please try again.';
@@ -96,30 +95,53 @@ angular.module('airStatusApp', [])
 
     // Fetch coordinates based on city name
     $scope.searchCity = function(city) {
-        const geoUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city || $scope.cityName}&limit=1&appid=${APPID}`;
+        // Validate input
+        if (!city || city.trim() === '') {
+            $scope.errorMessage = 'Please enter a city name.';
+            return;
+        }
 
+        console.log('Searching for city:', city);
+        $scope.errorMessage = ''; // Clear previous errors
+
+        const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`;
+        
         $http.get(geoUrl).then(function(response) {
-            const data = response.data;
-            if (data.length === 0) {
-                $scope.errorMessage = 'City not found. Please enter a valid city name.';
+            const data = response.data.results;
+
+            if (!data || data.length === 0) {
+                $scope.errorMessage = 'City not found. Please try another city.';
+                console.warn('No results found for city:', city);
                 return;
             }
 
-            const lat = data[0].lat;
-            const lon = data[0].lon;
+            const lat = data[0].latitude;
+            const lon = data[0].longitude;
             const country = data[0].country;
             const cityName = data[0].name;
-            $scope.cities = `${cityName}, ${country}`;
 
-            // Fetch air quality for the selected city
+            $scope.cities = `${cityName}, ${country}`;
+            console.log('City found:', cityName, country, `(${lat}, ${lon})`);
+
+            // Save to sessionStorage so weather page can access it
+            sessionStorage.setItem("currentLat", lat);
+            sessionStorage.setItem("currentLon", lon);
+
             $scope.getAirQuality(lat, lon);
         }).catch(function(error) {
             console.error('Error fetching coordinates:', error);
-            $scope.errorMessage = 'Failed to find the city. Please try again.';
+            $scope.errorMessage = 'Failed to find the city. Please check your internet connection and try again.';
         });
     };
 
-    // Load default data for Islamabad
-    $scope.searchCity('Islamabad');
+    // Initialize with Islamabad as default
+    function initializeController() {
+        console.log('Initializing air quality controller...');
+        // Always load Islamabad on page load
+        $scope.searchCity('Islamabad');
+    }
+
+    // Load data on controller initialization
+    initializeController();
 }]);
 //---------------------------------------------------------------------------------------------------

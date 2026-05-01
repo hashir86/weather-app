@@ -16,13 +16,15 @@
     <div ng-app="airStatusApp" ng-controller="AirStatusController">
         <div class="navbar">
             <ul>
-            <li><a class="logo" href="index.html"><p>Mausam</p></a></li>
-        </ul>
+                <li><a class="logo" href="index.html"><p>Mausam</p></a></li>
+            </ul>
             <div class="searchbar">
                 <input class="searchtext" type="search" ng-model="cityName" placeholder="Search for a city"
                     aria-label="Search">
-                <button id="submit" type="button" ng-click="searchCity()"><a href="#" class="searchbtn" id="searchbtn">
-                        <img src="photos\magnifier.png" alt=""></button>
+                <!-- FIXED: Pass cityName parameter to searchCity function -->
+                <button id="submit" type="button" ng-click="searchCity(cityName)"><a href="#" class="searchbtn" id="searchbtn">
+                        <img src="photos\magnifier.png" alt="">
+                    </a></button>
             </div>
             <ul>
                 <li><a id="air-page" href="air-status page.html">Air Quality</a> </li>
@@ -31,7 +33,7 @@
 
         <main>
             <div class="air">
-                <div ng-if="errorMessage">
+                <div ng-if="errorMessage" style="color: red; padding: 20px; text-align: center; font-size: 18px;">
                     {{ errorMessage }}
                 </div>
                 <table id="table">
@@ -39,59 +41,60 @@
                         <td>
                             <div ng-if="cities" class="current-pollutants">
                                 <div id="upside">
-                                <p id="city-name">City: {{ cities }}</p>
-                                <p id="date-info">Date: {{ airData.date }} ({{ dayOfWeek }})</p>
-                                <p id="AQI">Current AQI: {{ airData.currentAQI }}</p>
-                                <span ng-style="{ color: airData.statuses.PM2_5.color}" style="display: block; text-align: center; position: relative; top: 55px; font-size: 30px;">
-                                    ({{ airData.statuses.PM2_5.status }})
-                                </span>
-                            </div>
-                        
+                                    <p id="city-name">City: {{ cities }}</p>
+                                    <p id="date-info">Date: {{ airData.date }} ({{ dayOfWeek }})</p>
+                                    <p id="AQI">Current AQI: {{ airData.currentAQI }}</p>
+                                    <span ng-style="{ color: airData.statuses.PM2_5.color}" style="display: block; text-align: center; position: relative; top: 55px; font-size: 30px;">
+                                        ({{ airData.statuses.PM2_5.status }})
+                                    </span>
+                                </div>
+                            
                                 <br>
-                            <h2 style="color: coral;">Other Pollutants:</h2>
-                            <h3 id="pollutant-color">PM2.5: {{ airData.PM2_5 }} µg/m³
-                                <span ng-style="{ color: airData.statuses.PM2_5.color }">({{ airData.statuses.PM2_5.status }})</span>
-                            </h3 id="pollutant-color">
+                                <h2 style="color: coral;">Other Pollutants:</h2>
+                                <h3 id="pollutant-color">PM2.5: {{ airData.PM2_5 }} µg/m³
+                                    <span ng-style="{ color: airData.statuses.PM2_5.color }">({{ airData.statuses.PM2_5.status }})</span>
+                                </h3>
+                                    <p>
+                                        Fine Particulate Matter are inhalable pollutant particles with a diameter less than 2.5 micrometers that can enter the lungs and bloodstream, resulting in serious health issues. The most severe impacts are on the lungs and heart. Exposure can result in coughing or difficulty breathing, aggravated asthma, and the development of chronic respiratory disease.
+                                    </p>
+                                    <br>
+                                <h3 id="pollutant-color">PM10: {{ airData.PM10 }} µg/m³
+                                    <span ng-style="{ color: airData.statuses.PM10.color }">({{ airData.statuses.PM10.status }})</span>
+                                </h3>
+                                    <p>
+                                        Particulate Matter are inhalable pollutant particles with a diameter less than 10 micrometers. Particles that are larger than 2.5 micrometers can be deposited in airways, resulting in health issues. Exposure can result in eye and throat irritation, coughing or difficulty breathing, and aggravated asthma. More frequent and excessive exposure can result in more serious health effects.
+                                    </p>
+                                <h3 id="pollutant-color">NO₂: {{ airData.NO2 }} µg/m³
+                                    <span ng-style="{ color: airData.statuses.NO2.color }">({{ airData.statuses.NO2.status }})</span>
+                                </h3>
                                 <p>
-                                    Fine Particulate Matter  are inhalable pollutant particles with a diameter less than 2.5 micrometers that can enter the lungs and bloodstream, resulting in serious health issues. The most severe impacts are on the lungs and heart. Exposure can result in coughing or difficulty breathing, aggravated asthma, and the development of chronic respiratory disease.
+                                    Nitrogen Dioxide is a harmful gas that can irritate airways, reduce lung function, and
+                                    aggravate respiratory diseases like asthma.
                                 </p>
                                 <br>
-                            <h3 id="pollutant-color">PM10: {{ airData.PM10 }} µg/m³
-                                <span ng-style="{ color: airData.statuses.PM10.color }">({{ airData.statuses.PM10.status }})</span>
-                            </h3>
+                                <h3 id="pollutant-color">O₃: {{ airData.O3 }} µg/m³
+                                    <span ng-style="{ color: airData.statuses.O3.color }">({{ airData.statuses.O3.status }})</span>
+                                </h3>
                                 <p>
-                                    Particulate Matter  are inhalable pollutant particles with a diameter less than 10 micrometers. Particles that are larger than 2.5 micrometers can be deposited in airways, resulting in health issues. Exposure can result in eye and throat irritation, coughing or difficulty breathing, and aggravated asthma. More frequent and excessive exposure can result in more serious health effects.
+                                    Ozone is a reactive gas that can worsen asthma and other lung conditions, especially
+                                    during high exposure.
                                 </p>
-                            <h3 id="pollutant-color">NO₂: {{ airData.NO2 }} µg/m³
-                                <span ng-style="{ color: airData.statuses.NO2.color }">({{ airData.statuses.NO2.status }})</span>
-                            </h3>
-                            <p>
-                                Nitrogen Dioxide is a harmful gas that can irritate airways, reduce lung function, and
-                                aggravate respiratory diseases like asthma.
-                            </p>
-                            <br>
-                            <h3 id="pollutant-color">O₃: {{ airData.O3 }} µg/m³
-                                <span ng-style="{ color: airData.statuses.O3.color }">({{ airData.statuses.O3.status }})</span>
-                            </h3>
-                            <p>
-                                Ozone is a reactive gas that can worsen asthma and other lung conditions, especially
-                                during high exposure.
-                            </p>
-                            <br>
-                            <h3 id="pollutant-color">SO₂: {{ airData.SO2 }} µg/m³
-                                <span ng-style="{ color: airData.statuses.SO2.color }">({{ airData.statuses.SO2.status }})</span>
-                            </h3>
-                            <p>
-                                Sulfur Dioxide is a toxic gas that can cause respiratory problems, especially for people
-                                with asthma or chronic lung conditions.
-                            </p>
-                            <br>
                                 <br>
+                                <h3 id="pollutant-color">SO₂: {{ airData.SO2 }} µg/m³
+                                    <span ng-style="{ color: airData.statuses.SO2.color }">({{ airData.statuses.SO2.status }})</span>
+                                </h3>
+                                <p>
+                                    Sulfur Dioxide is a toxic gas that can cause respiratory problems, especially for people
+                                    with asthma or chronic lung conditions.
+                                </p>
+                                <br>
+                                    <br>
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
+        </main>
     </div>
     <br>
     <p class="scale">Air Quality Scale:</p>
@@ -151,8 +154,6 @@
             <td>750-1250</td>
         </tr>
     </table>
-    </div>
-    </main>
 
     <footer class="flex-all-centre">
         <p>All rights reserved &copy; copyright: Mausam.pk</p>
@@ -163,8 +164,7 @@
             <a href="#"><img src="photos\twitter.svg" alt=""></a>
         </div>
     </footer>
-</body>
 
-</script>
+</body>
 
 </html>
