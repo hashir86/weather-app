@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Weather App</h1>
+        <p>Get the latest weather updates for any city around the world.</p>
+    <!---------------------------------------- Image ------------------------------------->
+        <img src="weather-banner.jpg" alt="Weather banner" width="100%">
+    </header>
+
+    <!--------------------------------------- Search Form ------------------------------------------>
+    <section>
+        <h2>Search Weather by City</h2>
+        <form action="/search" method="GET">
+            <label for="city">Enter City Name:</label>
+            <input type="text" id="city" name="city" placeholder="e.g., New York" required>
+            <input type="submit" value="Search">
+        </form>
+    </section>
+
+    <!------------------------------------------ Table ----------------------------------------------->
+    <section>
+        <h2>Weather Summary</h2>
+        <table border="1">
+            <tr>
+                <th>Day</th>
+                <th>Condition</th>
+                <th>Temperature (°C)</th>
+                <th>Precipitation (%)</th>
+            </tr>
+            <tr>
+                <td>Monday</td>
+                <td>Sunny</td>
+                <td>25</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Tuesday</td>
+                <td>Cloudy</td>
+                <td>22</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Wednesday</td>
+                <td>Rainy</td>
+                <td>18</td>
+                <td>60</td>
+            </tr>
+            <tr>
+                <td>Thursday</td>
+                <td>Thunderstorms</td>
+                <td>20</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>Friday</td>
+                <td>Partly Cloudy</td>
+                <td>23</td>
+                <td>5</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>About the Weather App</h2>
+        <p>This app provides real-time weather updates and forecasts to help you plan your week. Just enter a city name in the search box above to view the weather conditions, temperature, and precipitation forecast for your chosen location.</p>
+        <p>Stay informed about the latest weather updates, and never be caught off guard by unexpected weather changes.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Weather App. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

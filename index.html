@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="weather.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a class="logo" href="#"><p>Mausam</p></a></li>
+        </ul>
+        <div class="searchbar">
+            <input id='city' type="text" class="searchtext" id="searchtext" placeholder="  Enter City....."
+                aria-label="search">
+            <button type="submit" id="submit"><a href="#" class="searchbtn" id="searchbtn">
+                    <img src="photos\magnifier.png" alt="">
+                </a></button>
+        </div>
+        <p id="error-message" style="color: red; display: none;"></p>
+        <ul>
+            <li><a id="air-page" href="air-status page.html">Air Quality</a> </li>
+        </ul>
+    </div>
+    <main>
+        <div class="left">
+            <div class="sidebar">
+                <video id="weatherVideo" autoplay loop muted>
+                    <source src="photos\nightskyclouds.mp4" type="video/mp4">
+                </video>
+                <div class="top">
+                    <ul>
+                        <li>
+                            <div id="main" class="main-pic"><img src="" alt=""></div>
+                            <p id="temp">--</p>
+                            <span id="day">-</span>
+                            <span id="time">-</span>
+                            <p id="sky" class="sky">-</p>
+                            <p class="loc">
+                                <span><img src="photos\location-point.svg" alt=""></span>
+                                <span id='cit' class="cit">---</span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="statistics">
+                    <div class="stats">
+                        <div>
+                            <p class="feels_like">feel
+                            <p>
+                                <span><img src="photos\temperature (1).svg" alt=""></span>
+                                <span>Feels Like</span>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div>
+                            <p class="wind">Wind
+                            <p>
+                                <span><img src="photos\wind.png" alt="h">&nbsp;</span>
+                                <span>Wind</span>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div>
+                            <p class="humidity">Humidity
+                            <p>
+                                <span><img src="photos\humidity.png" alt="">&nbsp;</span>
+                                <span>Humidity</span>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div>
+                            <p class="current-precipitation">0
+                            <p>
+                                <span><img src="photos\cloud.png" alt="">&nbsp;</span>
+                                <span>Clouds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="middle-container">
+            <section class="daily-weather">
+                <div class="up-sec">
+                    <span><img src="photos\calendar-alt.svg" alt=""> DAILY FORECAST</span>
+                    <span>
+                        <button id="toggleDaily" class="btn btn-secondary small-btn">Toggle</button> 
+                    </span>
+                    <span class="d-line"></span>
+                </div>
+                <button class="pre-btn"><img src="photos\arrow-circle-right.svg" alt="previous"></button>
+                <button class="nxt-btn"><img src="photos\arrow-circle-right.svg" alt="next"></button>
+                
+                <div class="loader" style="display:none;">Loading...</div>
+
+                <div class="daily-container">
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                    <div class="daily-card">
+                        <div class="container">
+                            <div class="day">-</div>
+                            <div class="date">-</div>
+                            <div class="item3"><img src="" alt="sun"></div>
+                            <div class="max">-</div>
+                            <div class="min">-</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="hourly-weather">
+                <div class="up-sec">
+                    <span><img src="photos\clock-three.svg" alt=""> HOURLY FORECAST</span>
+                    <span>
+                        <button id="toggleHourly" class="btn btn-secondary small-btn">Toggle</button>
+                    </span>
+                    <span class="d-line"></span>
+                </div>
+                <button class="pre-btn"><img src="photos\arrow-circle-right.svg" alt="previous"></button>
+                <button class="nxt-btn"><img src="photos\arrow-circle-right.svg" alt="next"></button>
+                
+                <div class="loader" style="display:none;">Loading...</div>
+                <div class="loaders" style="display:none;">Loading...</div>
+                <div class="hourly-container">
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="sun.svg">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hourly-card">
+                        <ul>
+                            <li>
+                                <p class="time">hh</p>
+                                <img src="photos\sun.svg" alt="">
+                                <p class="temp">h</p>
+                                <br>
+                                <span><img src="photos\drop.png" alt=""></span>
+                                <span class="precipitation">-</span>
+                            </li>
+                        </ul>
+                    </div>
+            </section>
+
+            <section class="sun-section">
+                <div class="sun">
+                    <div>
+                        <span><img src="photos\eye.svg" alt=""></span>
+                        <p class="visibility">feel
+                        <p>
+                    </div>
+                </div>
+                <div class="sun">
+                    <div>
+                        <span><img src="photos\sun.svg" alt=""></span>
+                        <p class="sunrise">-
+                        <p>
+
+                    </div>
+                </div>
+                <div class="sun">
+                    <div>
+                        <span><img src="photos\sunset.svg" alt=""></span>
+                        <p class="sunset">-
+                        <p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="weather.js"></script>
+</body>
+</html>

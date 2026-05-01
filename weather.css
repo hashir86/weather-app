@@ -1,0 +1,1079 @@
+*,
+body,
+html {
+    padding: 0;
+    margin: 0;
+
+}
+
+body {
+    background-color: #000000;
+}
+
+main {
+    background-color: black;
+    width: 100%;
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    width: 520px;
+}
+
+.navbar {
+    /* background-color : rgba(0, 140, 255, 0.815); */
+    display: flex;
+    background-color: black;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.logo {
+    font-size: 40px;
+    height: 30px;
+    padding-left: 15px;
+    color: rgb(76, 120, 240);
+    font-family: Pacifico, cursive;
+
+}
+
+.logo p {
+    color: rgb(76, 120, 240);
+    padding-bottom: 39px;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: aliceblue;
+}
+#air-page{
+    position: relative;
+    top: 8px;
+}
+#air-page:hover{
+    color: rgb(76, 120, 240);
+}
+
+.sidebar {
+    position: relative;
+    color: aliceblue;
+    margin: 15px 0 15px 15px;
+    width: 500px;
+    height: 560px;
+    border-radius: 15px;
+    font-size: 45px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.sidebar p {
+    font-size: 25px;
+}
+
+.sidebar span {
+    font-size: 30px;
+}
+
+.sidebar>h1 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.top {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0 0 9px #000000, 0 0;
+    position: relative;
+    z-index: 1;
+}
+
+#main img {
+    position: relative;
+    bottom: 10px;
+    width: 130px;
+}
+
+#temp {
+    padding: 0;
+    position: relative;
+    bottom: 20px;
+}
+
+#day,
+#time {
+    font-size: 20px;
+    position: relative;
+    bottom: 30px;
+}
+
+#sky {
+    font-size: 30px;
+    position: relative;
+    bottom: 25px;
+}
+
+.cit {
+    font-size: 1px;
+    position: relative;
+    bottom: 18px;
+    right: -10px;
+}
+
+.statistics {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 500px;
+    margin-top: 10px;
+    margin-bottom: 990px;
+    position: relative;
+    z-index: 1;
+
+}
+
+.stats {
+    width: 200px;
+    height: 110px;
+    margin: 10px;
+    margin-bottom: 1px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    position: relative;
+    z-index: 1;
+}
+
+.statistics span {
+    font-size: 20px;
+}
+
+.middle-container {
+    height: 555px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    width: 100%;
+    padding: 0 10px 0 10px;  
+    overflow-x: hidden;
+}
+
+
+.daily-weather,
+.hourly-weather {
+    height: 200px;
+    width: 100%;
+    border-radius: 15px;
+    align-items: center;
+    padding: 0;
+    position: relative;
+    display: grid;
+    grid-template-areas: 'up-sec'
+        'daily-container';
+
+}
+
+.hourly-weather {
+    margin: 10px 1px;
+    grid-template-areas: 'up-sec'
+        'hourly-container';
+}
+
+.small-btn {
+    font-size: 12px; 
+    padding: 5px 10px; 
+    position: absolute; 
+    top: 15px; 
+    right: 10px; 
+    background-color: #6c757d; 
+    color: white;
+    border: none; 
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.small-btn:hover {
+    background-color: #5a6268; 
+}
+
+.loader, .loaders {
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    z-index: 1;
+}
+
+
+
+.daily-weather,
+.up-sec,
+.hourly-weather,
+.sun-section,
+.stats {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.pre-btn,
+.nxt-btn {
+    border: none;
+    width: 35px;
+    height: 29%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.pre-btn {
+    transform: rotate(180deg);
+    left: 0;
+}
+
+.nxt-btn {
+    right: 0;
+}
+
+.nxt-btn img,
+.pre-btn img {
+    width: 35px;
+    opacity: 10;
+}
+
+.nxt-btn img:hover,
+.pre-btn img:hover {
+    opacity: 0.5;
+
+}
+
+.daily-container,
+.hourly-container {
+    display: flex;
+    padding: 0 3vw;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 10px;
+    height: 150px;
+}
+
+.daily-container::-webkit-scrollbar,
+.hourly-container::-webkit-scrollbar {
+    display: none;
+}
+
+.daily-card,
+.hourly-card {
+    width: 150px;
+    height: 130px;
+    border-radius: 9px;
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+    color: white;
+    bottom: 5px;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+}
+
+.up-sec {
+    display: block;
+    color: rgb(218, 212, 212);
+    border-radius: 15px;
+    height: 40px;
+    font-weight: bold;
+    padding: 20px 10px 0 10px;
+    z-index: 1;
+}
+
+.d-line {
+    border-bottom: 1px solid;
+    color: gray;
+
+    display: block;
+    margin-top: 10px;
+}
+
+.up-sec>span>img {
+    width: 20px;
+}
+
+.hourly-card {
+    width: 1000px;
+}
+ 
+.statistics img {
+    width: 30px;
+    position: relative;
+    left: 8px;
+    top: 5px; 
+}   
+.sidebar span img {
+    width: 30px;
+    position: relative;
+    left: 8px;
+    bottom: 12px;
+
+} 
+
+.daily-card:hover,
+.hourly-card:hover,
+.sun:hover {
+    background-color: gray;
+}
+
+.daily-card:hover {
+    cursor: pointer;
+}
+
+.daily-card img {
+    width: 90px;
+    height: 40px;
+}
+
+.hourly-card ul {
+    list-style: none;
+}
+
+.hourly-card ul li {
+    margin-top: 10px;
+    width: 70px;
+}
+
+.hourly-card ul li span img {
+    width: 15px;
+}
+
+.hourly-card img {
+    width: 35px;
+}
+
+.daily-card img {
+    width: 60px;
+}
+
+.sun-section {
+    /* background-color: rgba(0, 140, 255, 0.815); */
+    height: 200px;
+    width: 100%;
+    margin: 0 1px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px 1px;
+    color: white;
+}
+
+.sun {
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    margin-bottom: 1px;
+    border-radius: 9px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sun img {
+    width: 70px;
+    font-weight: bold;
+}
+
+.searchbar {
+    width: 50%;
+    height: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 40px;
+    top: 4px;
+    z-index: 10;
+    
+}
+
+::placeholder {
+    color: white;
+}
+
+.searchtext {
+    width: 120%;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 16px;
+    background-color: rgb(156, 153, 153);
+}
+
+.searchbar input {
+    padding-left: 20px;
+
+}
+
+.searchbtn {
+    text-decoration: none;
+    position: relative;
+    right: 39px;
+    top: 2px;
+    padding: 4px 8px;
+    border-radius: 15px;
+}
+.searchbar button img{
+    width: 25px;
+}
+.stats p {
+    font-size: 25px;
+}
+
+.searchbar button {
+    background-color: transparent;
+    outline: none;
+    border: 0;
+}
+
+.container {
+    display: grid;
+    width: 140px;
+    height: 106px;
+    grid-template-areas: 'day date'
+        'sun max-temp'
+        'sun min-temp'
+        'sun min-temp';
+}
+
+.item1 {
+    grid-area: day;
+    border: 2px solid black;
+    width: 50px;
+}
+
+.item3 {
+    grid-area: sun;
+    height: 2px;
+    width: 55px;
+
+}
+
+.item4 {
+    grid-area: max-temp;
+    border: 2px solid black;
+
+}
+
+.item5 {
+    grid-area: min-temp;
+    border: 2px solid black;
+    font-size: 509px;
+}
+
+.item2 {
+    grid-area: date;
+    border: 1px solid black;
+    margin-top: 560px;
+
+}
+
+.item3 img {
+    height: 57px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.day,
+.date {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.min,
+.max {
+    font-size: 20px;
+    margin-top: 11px;
+    font-weight: bold;
+}
+
+.main-pic>img {
+    width: 150px;
+    padding: 0;
+}
+
+#temp {
+    font-size: 40px;
+    font: 1em sans-serif;
+    font-weight: bold;
+}
+
+#weatherVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -6;
+    /* Sends video to background */
+    opacity: 0.7;
+}
+
+/*-----------------------------------------------------------responsive home page----------------------*/
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    main img{
+        position: relative;
+        right: 32px
+    }
+
+    .daily-container::-webkit-scrollbar,
+    .hourly-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sun-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 340px;
+    }
+
+    .sun {
+        margin-bottom: 15px;
+    }
+
+    .searchbar {
+        width: 50%;
+        margin-right: 50px;
+    }
+
+    .searchbar button {
+        position: relative;
+        bottom: 39px;
+        z-index: 1;
+
+    }
+
+    .searchbtn {
+        position: relative;
+        left: 65px;
+        z-index: 1;
+
+    }
+
+    .searchtext {
+        width: 90%;
+        height: 40px;
+        position: relative;
+        bottom: 10px;
+        margin-right: 90px;
+        z-index: 0;
+    }
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .sidebar {
+        width: 99%;
+        height: 300px;
+    }
+
+    .left {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    
+    .item3 img, .hourly-card img, .sun img{
+        position: relative;
+        right: 1px;
+    }
+    .statistics {
+        width: 250px;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        position: relative;
+        left: 3px;
+    }
+
+    .stats {
+        width: 90px;
+        height: 90px;
+    }
+
+    .stats div p {
+        font-size: 15px;
+    }
+
+    .stats div p span img {
+        width: 20px;
+    }
+
+    .stats div p span {
+        font-size: 15px;
+    }
+
+    .top {
+        margin-left: 210px;
+        height: 29px;
+
+    }
+
+    .top ul li #day,
+    #time {
+        font-size: 15px;
+    }
+
+    #temp {
+        margin-top: 20px;
+        font-size: 35px;
+    }
+
+    .statistics span img{
+        width: 30px;
+        position: relative;
+        top: 4px;
+    }
+    .main-pic {
+        position: relative;
+        font-size: 10px;
+        width: 20px;
+        left: 120px;
+        top: 15px
+    }
+    .searchbar button img{
+        width: 20px;
+        position: relative;
+        left: 29px;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+   
+    .navbar {
+        width: 99%;
+        position: relative;
+        right: 20px;
+    }
+
+    .navbar ul li {
+        font-size: 15px;
+    }
+
+    .hourly-card,
+    .daily-card {
+        width: 100%;
+    }
+
+
+    .middle-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sun-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 340px;
+    }
+
+    .sun {
+        margin-bottom: 15px;
+    }
+
+    .searchbar {
+        width: 50%;
+        margin-right: 50px;
+    }
+
+    .searchbar button {
+        width: 5px;
+        position: relative;
+        bottom: 41px;
+        z-index: 1;
+        right: 48px;
+    }
+    .searchbar button img{
+        width: 20px;
+        position: relative;
+        left: 13px;
+    }
+
+    .searchbtn {
+        position: relative;
+        left: 65px;
+        z-index: 1;
+    }
+
+    .searchtext {
+        width: 95%;
+        height: 40px;
+        position: relative;
+        bottom: 10px;
+        right: 20px;
+        z-index: 0;
+    }
+
+    .top {
+        width: 100%;
+        right: 190px;
+        height: 300px;
+
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 600px;
+
+    }
+
+    .left {
+        height: 600px;
+        width: 100%;
+
+    }
+
+    .statistics {
+        width: 250px;
+        margin-left: 45px;
+
+    }
+
+    .stats {
+        width: 100px;
+        height: 90px;
+    }
+
+    .stats div p {
+        font-size: 15px;
+    }
+
+    .stats div p span img {
+        width: 20px;
+    }
+
+    .stats div p span {
+        font-size: 15px;
+    }
+
+    .top ul li #day {
+        font-size: 15px;
+
+    }
+
+    #time {
+        margin-right: 45px;
+    }
+
+    #temp {
+        margin-top: 25px;
+        font-size: 35px;
+        margin-right: 60px;
+    }
+
+    .top ul li
+    #cit,
+    #sky {
+        font-size: 20px;
+        margin-right: 60px;
+    }
+
+}
+
+/* -----------------------------------------------------------footer   air [page */
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.icons a img {
+    width: 24px;
+    height: 24px;
+}
+
+table {
+    width: 100%;
+}
+
+#table th,
+#table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid gray;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+#table th {
+    font-size: 1.2em;
+    background-color: brown;
+}
+
+.cities {
+    font-size: 45px;
+    font-weight: bold;
+    color: rgb(0, 235, 125);
+}
+
+.current-air,
+.current-pollutants {
+    padding: 10px;
+}
+
+.current-air {
+    width: 200px;
+}
+
+.current-air span,
+.current-pollutants span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.current-air span.air-day {
+    font-size: 30px;
+    font-weight: bold;
+    color: aqua;
+}
+
+.current-air span.air-date {
+    font-size: 20px;
+}
+
+.current-air span.curr-air {
+    font-size: 25px;
+    color: blueviolet;
+}
+
+.air-text {
+    font-weight: bold;
+    font-size: 33px;
+    color: orange;
+}
+
+.current-pollutants span {
+    font-size: 20px;
+    font-weight: bold;
+    color: brown;
+}
+
+.current-pollutants p {
+    color: rgb(245, 245, 245);
+    font-size: 17px
+}
+
+.scale {
+    font-size: 30px;
+    font-weight: bold;
+    color: orange;
+}
+
+.pollutant-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+.pollutant-table th,
+.pollutant-table td {
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.pollutant-table th {
+    font-weight: bold;
+    background-color: rgba(127, 255, 212, 0.397);
+}
+
+.pollutant-table .header {
+    font-weight: bold;
+
+}
+
+.air {
+    color: aliceblue;
+}
+#city-name, #date-info, #AQI{
+    color: aqua;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    top:56px
+}
+#pollutant-color{
+    color: rgb(182, 125, 247);
+}
+#upside{
+    height: 300px;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)), url('photos/airpollution.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+/*-----------------------------------------------------------responsive air status page----------------------*/
+@media (max-width: 768px) {
+
+    .navbar ul,
+    .navbar .searchbar {
+        display: block;
+        text-align: center;
+    }
+
+    .current-air,
+    .current-pollutants {
+        font-size: 0.9em;
+    }
+
+    th,
+    td {
+        font-size: 0.8em;
+    }
+
+    .scale,
+    .air-text {
+        font-size: 24px;
+    }
+
+    .pollutant-table th,
+    .pollutant-table td {
+        padding: 8px;
+    }
+
+    footer {
+        padding: 15px;
+    }
+
+    footer p {
+        font-size: 0.9em;
+    }
+
+    .icons a img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .cities,
+    .air-text,
+    .curr-air {
+        font-size: 20px;
+    }
+
+    .air-day,
+    .air-date {
+        font-size: 15px;
+    }
+
+    .navbar ul {
+        padding: 0;
+        flex-direction: column;
+    }
+
+    #table,
+    .pollutant-table {
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    th,
+    td {
+        font-size: 0.7em;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+
+    .icons {
+        gap: 10px;
+    }
+
+    footer p {
+        font-size: 0.8em;
+    }
+
+    .icons a img {
+        width: 18px;
+        height: 18px;
+    }
+
+
+}
